@@ -1,6 +1,6 @@
 ---
 name: migrate-research-project
-description: Inventory an existing messy research folder and propose a conservative migration into this template. Use when a researcher already has notebooks, scripts, data, papers, or notes outside the scaffold.
+description: Inventory an existing messy research folder and propose a conservative migration into a single-project root or an umbrella projects directory. Use when a researcher already has notebooks, scripts, data, papers, repos, or notes outside the scaffold.
 ---
 
 # Migrate Research Project
@@ -11,10 +11,14 @@ propose second, copy or move only after approval.
 ## Process
 
 1. Ask for the source folder path if it is not already clear.
-2. Run the inventory script:
+2. Run the inventory script from the active agent stack:
 
    ```bash
+   # Codex
    python .codex/skills/migrate-research-project/scripts/inventory_research_folder.py /path/to/source --out migration_inventory.md
+
+   # Claude Code
+   python .claude/skills/migrate-research-project/scripts/inventory_research_folder.py /path/to/source --out migration_inventory.md
    ```
 
 3. Read the inventory and identify:
@@ -26,20 +30,29 @@ propose second, copy or move only after approval.
    - possible secrets
    - existing git repositories
    - related projects that may belong together under `projects/`
-4. Interview the researcher about ambiguous items. Ask one question at a time.
-5. Propose a migration table before changing anything:
+4. Determine the migration target:
+   - **Single project**: migrate approved materials into the root layout
+     (`data/`, `notebooks/`, `src/`, `outputs/`, `papers/`, `context/`).
+   - **Umbrella project**: migrate each related project into
+     `projects/<project-name>/`; keep shared context and papers at the root.
+   - **Existing git repo**: preserve history and propose adding it under
+     `projects/` rather than flattening it, unless the researcher explicitly
+     wants a copy-only import.
+5. Interview the researcher about ambiguous items. Ask one question at a time.
+6. Propose a migration table before changing anything:
 
    | Current path | Proposed destination | Action | Reason |
    | ------------ | -------------------- | ------ | ------ |
 
-6. Default to non-destructive actions:
+7. Default to non-destructive actions:
    - copy rather than move
    - preserve original filenames
    - do not stage large/private data
    - document external data locations in `data/README.md`
    - write `MIGRATION_LOG.md`
-7. After approval, apply the agreed migration and update `README.md`,
-   `CONTEXT.md`, `data/README.md`, and a decision record.
+8. After approval, apply the agreed migration and update the relevant
+   `README.md`, `CONTEXT.md`, `data/README.md`, `MIGRATION_LOG.md`, and decision
+   record.
 
 ## Safety Rules
 

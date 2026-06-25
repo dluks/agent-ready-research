@@ -15,8 +15,8 @@ Fill this in with the `setup-research-project` skill.
 ## How To Work Here
 
 - Read `CONTEXT.md` before making project-shaping recommendations.
-- Read `data/README.md` before touching data, analysis inputs, or generated
-  outputs.
+- Read the nearest relevant `data/README.md` before touching data, analysis
+  inputs, or generated outputs.
 - Record durable decisions in `context/decisions/`.
 - Do not commit credentials, private tokens, unpublished sensitive data, or
   large raw files unless the project explicitly says they are safe to track.
@@ -36,6 +36,9 @@ Fill this in with the `setup-research-project` skill.
 - `projects/` is optional. Use it when several related research projects should
   sit under one context-rich umbrella. Existing Git repositories can be attached
   here as submodules, while the root keeps shared context, decisions, and papers.
+- For a single project, `data/`, `notebooks/`, `src/`, `outputs/`, and
+  `papers/` usually live at the root. For an umbrella project, those directories
+  usually live inside each `projects/<name>/` repo or folder.
 
 ## Skills
 
@@ -43,9 +46,11 @@ The project ships the same starter skills in `.codex/skills/` and
 `.claude/skills/`. Keep both copies synchronized when editing shared workflows.
 
 - `setup-research-project`: interview the researcher and populate the initial
-  context files.
+  context files, branching between single-project and umbrella layouts.
 - `migrate-research-project`: inventory an existing folder and propose a
-  conservative migration path.
+  conservative migration path into the root or `projects/<name>/`.
+- `contextualize-existing-project`: make an existing repository agent-ready in
+  place without migrating it into this scaffold.
 - `research-grill`: stress-test a study design, method, claim, or plan.
 - `research-plan`: turn a discussion into an analysis plan.
 - `to-work-packages`: break a plan into independently executable research tasks.

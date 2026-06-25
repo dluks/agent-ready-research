@@ -149,6 +149,7 @@ def render_markdown(root: Path, entries: list[Entry]) -> str:
             "- Which notebooks, scripts, or documents are canonical?",
             "- Which files are scratch, obsolete, or duplicated?",
             "- Which data should stay outside git?",
+            "- Is this a single project or an umbrella with entries under `projects/`?",
             "- Are any nested git repositories separate projects for `projects/`?",
         ]
     )
