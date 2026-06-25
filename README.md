@@ -75,6 +75,33 @@ Use the root for shared context and put related projects under `projects/`:
 | `papers/` | Cross-project manuscripts and presentations. |
 | `projects/<name>/` | Each related project, often with its own data, notebooks, source, outputs, and agent guide. |
 
+## Adding Existing Projects As Submodules
+
+If an umbrella repo should link to existing Git repositories, add them under
+`projects/` as submodules. A submodule keeps the project in its own repository,
+while the umbrella repo records which version of that project belongs with the
+shared context.
+
+```bash
+git submodule add git@github.com:your-org/project-name.git projects/project-name
+git commit -m "Add project-name submodule"
+```
+
+When someone clones the umbrella repo, they should clone with submodules:
+
+```bash
+git clone --recurse-submodules git@github.com:your-org/umbrella-repo.git
+```
+
+If they already cloned it without submodules, populate them afterward:
+
+```bash
+git submodule update --init --recursive
+```
+
+When a submodule moves to a newer commit, commit that pointer from the umbrella
+repo so everyone else gets the same project version.
+
 ## Principles
 
 - Start with context, not tooling.
