@@ -1,0 +1,44 @@
+# OS / editor files
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Secrets
+.env
+.env.*
+*.pem
+*.key
+*token*
+*secret*
+
+# Python
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+
+# Large or sensitive research data: document these in data/README.md instead.
+data/**
+!data/
+!data/README.md
+!data/**/.gitkeep
+context/raw/
+
+# Common large scientific files
+*.nc
+*.nc4
+*.h5
+*.hdf5
+*.zarr/
+*.tif
+*.tiff
+*.gpkg
+*.parquet
+*.feather
+
+# Generated outputs can be opted into deliberately.
+outputs/**
+!outputs/
+!outputs/.gitkeep
