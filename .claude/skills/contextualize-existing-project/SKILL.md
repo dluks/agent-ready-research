@@ -1,6 +1,6 @@
 ---
 name: contextualize-existing-project
-description: Make an existing research repository agent-ready by gathering context and adding missing context files without migrating it into a new scaffold. Use when the researcher is already inside a repo and wants AGENTS.md, CONTEXT.md, data inventory, decisions, and helpful directories generated in place.
+description: Make an existing research repository agent-ready by gathering context, pruning noisy agent docs, and adding missing context files without migrating it into a new scaffold. Use when the researcher is already inside a repo and wants AGENTS.md, CONTEXT.md, data inventory, decisions, and helpful directories generated in place.
 ---
 
 # Contextualize Existing Project
@@ -16,30 +16,44 @@ the researcher explicitly approves a separate migration plan.
    - top-level directories
    - existing `README.md`, `AGENTS.md`, `CLAUDE.md`, `CONTEXT.md`
    - data, notebook, source, output, paper, and project-like directories
-2. Interview the researcher until you understand:
+2. If `CLAUDE.md` has project instructions, treat it as source material, not as
+   the final guide:
+   - distill durable rules into `AGENTS.md`
+   - replace `CLAUDE.md` with `@AGENTS.md`
+   - prefer deleting stale, generic, tool-specific, or aspirational advice
+3. Interview the researcher until you understand:
    - research question and current phase
    - whether this repo is a single project or an umbrella
    - canonical data and outputs
    - important notebooks, scripts, papers, and external materials
    - collaborator roles and decision-making norms
    - what future agents should be able to answer
-3. Add or update context in place:
+   - for existing `CLAUDE.md` / `AGENTS.md` content: what must stay, move, or go
+4. Add or update context in place:
    - `README.md`
-   - `AGENTS.md`
-   - `CLAUDE.md` as `@AGENTS.md` when Claude compatibility is desired
+   - slim, canonical `AGENTS.md`
+   - `CLAUDE.md` as `@AGENTS.md`
    - `CONTEXT.md`
    - `data/README.md` when data exists or is referenced
    - `context/decisions/0001-project-context.md`
-4. Create optional directories only when useful:
+5. Create optional directories only when useful:
    - Single project: `data/`, `notebooks/`, `src/`, `outputs/`, `papers/`,
      `context/meetings/`, `context/reading/`
    - Umbrella project: `projects/`, `papers/`, `context/decisions/`,
      `context/meetings/`, `context/reading/`
-5. If the repo contains several related but separable projects, propose a
+6. If the repo contains several related but separable projects, propose a
    `projects/` layout and a follow-up migration plan. Do not apply it by
    default.
-6. Finish with a summary of context added, assumptions made, and the next useful
+7. Finish with a summary of context added, assumptions made, and the next useful
    skill to run.
+
+## Agent Guide Pruning
+
+Default to a shorter `AGENTS.md`. Keep only instructions that are specific,
+current, and repeatedly useful for this repository. Move background context to
+`CONTEXT.md`, data details to `data/README.md`, and past decisions to
+`context/decisions/`. Do not preserve content just because it was already in
+`CLAUDE.md` or `AGENTS.md`.
 
 ## Completion Criteria
 
