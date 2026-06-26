@@ -19,6 +19,7 @@ shape, data, outputs, or existing materials are still ambiguous.
 3. Ask one question at a time until the mode, materials, data, outputs, and next
    action are clear. If written context already answers a question, infer a
    conservative answer and mark it as an assumption.
+   Use `domain-modeling` during this interview to start the project's language section by clarifying core terms, acronyms, dataset names, output names, and overloaded words.
 4. If the researcher already has a folder or repository to bring in, invoke
    `migrate-research-project` before moving files:
    - Single project: propose migration into the root layout.
@@ -26,7 +27,7 @@ shape, data, outputs, or existing materials are still ambiguous.
 5. Populate or update root context:
    - `README.md`
    - `AGENTS.md`
-   - `CONTEXT.md`
+   - `CONTEXT.md`, including an initial `## Language` section
    - `context/decisions/0001-project-shape.md`
 6. Create the selected layout.
 7. Finish with a summary of files created, assumptions, unanswered questions,
@@ -84,6 +85,14 @@ attach it under `projects/` rather than flattening it.
 - Tooling preferences: notebooks, scripts, command-line tools, package manager,
   cloud/HPC environment, issue tracker, Zotero, Overleaf, GitHub, RStudio.
 - What the researcher wants the agent to be able to answer after setup.
+
+## Language
+
+`CONTEXT.md` must include a `## Language` section from the beginning. This section can be small at first, but it should name the canonical terms that future agents and collaborators should use. This is the research-project version of active domain modeling.
+
+Capture terms for domain concepts, populations, datasets, variables, measurements, outputs, acronyms, and overloaded words. Mark unresolved terms as questions instead of inventing certainty.
+
+Use the `domain-modeling` skill's `CONTEXT.md` format when writing this section.
 
 ## Decision Record Template
 

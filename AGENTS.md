@@ -42,8 +42,7 @@ Fill this in with the `setup-research-project` skill.
 
 ## Skills
 
-The project ships the same starter skills in `.codex/skills/` and
-`.claude/skills/`. Keep both copies synchronized when editing shared workflows.
+The project ships starter skills in `.agents/skills/`. Treat this as the only editable source of truth for project-local skills.
 
 - `setup-research-project`: interview the researcher and populate the initial
   context files, branching between single-project and umbrella layouts.
@@ -51,7 +50,10 @@ The project ships the same starter skills in `.codex/skills/` and
   conservative migration path into the root or `projects/<name>/`.
 - `contextualize-existing-project`: make an existing repository agent-ready in
   place without migrating it into this scaffold.
-- `research-grill`: stress-test a study design, method, claim, or plan.
+- `domain-modeling`: sharpen the project's language and record durable research decisions as terms and tradeoffs become clear.
+- `grilling`: interview the researcher one question at a time to stress-test a plan, method, claim, dataset, interpretation, or output.
+- `research-grill`: run `grilling` with `domain-modeling` so the interview also updates language and durable decisions.
+- `setup-claude`: regenerate `.claude/skills/` from `.agents/skills/` and write `CLAUDE.md` as `@AGENTS.md` when Claude Code needs local setup.
 - `research-plan`: turn a discussion into an analysis plan.
 - `to-work-packages`: break a plan into independently executable research tasks.
 - `research-architecture-review`: review the project structure for agent and

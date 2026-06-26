@@ -16,7 +16,7 @@ TBD.
 
 TBD.
 
-## Ubiquitous Language
+## Language
 
 | Term | Meaning | Notes |
 | ---- | ------- | ----- |

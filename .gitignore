@@ -4,6 +4,11 @@
 .idea/
 .vscode/
 
+# Generated agent integrations. Canonical skills live in .agents/skills.
+.claude/
+.codex/
+CLAUDE.md
+
 # Secrets
 .env
 .env.*

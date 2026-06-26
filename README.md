@@ -25,16 +25,19 @@ before moving or copying anything.
 If you are already inside an existing repository and want to make it
 agent-ready in place, run `contextualize-existing-project`.
 
+Use `domain-modeling` whenever terminology, canonical datasets, project-specific acronyms, outputs, or durable decisions need to be clarified while you work.
+
+Skills live in `.agents/skills/`. If a Claude Code checkout needs project-local instructions, run `setup-claude` to regenerate `.claude/skills/` and `CLAUDE.md` from the canonical repo files.
+
 ## Core Layout
 
 | Path | Purpose |
 | ---- | ------- |
 | `README.md` | Human-facing project overview and setup notes. |
 | `AGENTS.md` | Agent-facing project rules, boundaries, and workflows. |
-| `CONTEXT.md` | Research question, glossary, current state, assumptions. |
+| `CONTEXT.md` | Research question, language/glossary, current state, assumptions. |
 | `context/decisions/` | Dated decision records that explain why choices were made. |
-| `.codex/skills/` | Project-local workflows for Codex. |
-| `.claude/skills/` | The same project-local workflows for Claude Code. |
+| `.agents/skills/` | Canonical project-local workflows for agents. |
 
 ## Optional Layout
 
@@ -105,10 +108,10 @@ repo so everyone else gets the same project version.
 ## Principles
 
 - Start with context, not tooling.
+- Carry over domain-modeling discipline into research work: start the language section early, using research concepts, data, methods, and outputs instead of application entities.
 - Keep unpublished data and credentials out of git by default.
 - Record decisions while they are still fresh.
 - Prefer a small structure that researchers will actually maintain.
 - Treat the repository as durable context for agents, collaborators, and future
   you.
-- Keep `.codex/skills/` and `.claude/skills/` synchronized when editing shared
-  skills.
+- Keep `.agents/skills/` as the only editable skills source. Regenerate tool-specific copies from it when needed.
