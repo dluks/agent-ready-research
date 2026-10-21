@@ -52,7 +52,7 @@ User-invoked (the researcher types the name; agents tell the researcher to run t
   conservative migration path into the root or `projects/<name>/`.
 - `research-grill`: run `research-grilling` with `research-domain-modeling` so the interview also updates language and durable decisions.
 - `handoff`: compact the current session into a handoff document for the next agent session.
-- `setup-claude`: regenerate `.claude/skills/` from `.agents/skills/` and write `CLAUDE.md` as `@AGENTS.md` when Claude Code needs local setup.
+- `setup-claude`: refresh the `.claude/skills/` symlinks to `.agents/skills/` and write `CLAUDE.md` as `@AGENTS.md` after adding, renaming, or removing a skill.
 
 Model-invoked (agents may also call these with the Skill tool when they fit):
 

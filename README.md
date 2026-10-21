@@ -31,7 +31,7 @@ Skills come in two kinds. **User-invoked** skills run only when you type their n
 
 A typical planning loop: `/research-grill` to stress-test an idea, `research-plan` to write it down, `to-tasks` to break the plan into tasks, and `lab-notebook` to record what each task turned up. `pi-progress-synthesis` turns the notebook into an update for your PI, collaborators, or lab meeting.
 
-Skills live in `.agents/skills/`, each with an `agents/openai.yaml` for Codex. If a Claude Code checkout needs project-local instructions, run `/setup-claude` to regenerate `.claude/skills/` and `CLAUDE.md` from the canonical repo files.
+Skills live in `.agents/skills/`, which Codex reads directly. Each skill folder holds a `SKILL.md`, optional supporting files (`references/`, `scripts/`), and an `agents/openai.yaml` with Codex display metadata. Claude Code reads `.claude/skills/`, which contains one committed symlink per skill pointing back into `.agents/skills/`, and `CLAUDE.md` contains `@AGENTS.md`. Edit skills in one place only. After adding, renaming, or removing a skill, run `/setup-claude` to refresh the links (it also covers Windows checkouts without symlink support).
 
 ## Core Layout
 
@@ -41,7 +41,8 @@ Skills live in `.agents/skills/`, each with an `agents/openai.yaml` for Codex. I
 | `AGENTS.md` | Agent-facing project rules, boundaries, and workflows. |
 | `CONTEXT.md` | Research question, language/glossary, current state, assumptions. |
 | `context/decisions/` | Dated decision records that explain why choices were made. |
-| `.agents/skills/` | Canonical project-local workflows for agents. |
+| `.agents/skills/` | Canonical project-local workflows for agents (read by Codex). |
+| `.claude/skills/` | Symlinks into `.agents/skills/` so Claude Code finds the same skills. |
 
 ## Optional Layout
 
