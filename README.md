@@ -25,9 +25,13 @@ before moving or copying anything.
 If you are already inside an existing repository and want to make it
 agent-ready in place, run `contextualize-existing-project`.
 
-Use `domain-modeling` whenever terminology, canonical datasets, project-specific acronyms, outputs, or durable decisions need to be clarified while you work.
+Use `research-domain-modeling` whenever terminology, canonical datasets, project-specific acronyms, outputs, or durable decisions need to be clarified while you work.
 
-Skills live in `.agents/skills/`. If a Claude Code checkout needs project-local instructions, run `setup-claude` to regenerate `.claude/skills/` and `CLAUDE.md` from the canonical repo files.
+Skills come in two kinds. **User-invoked** skills run only when you type their name (`/setup-research-project`); agents never start them on their own. **Model-invoked** skills can also be picked up by the agent when the situation fits. See the skill list in `AGENTS.md`.
+
+A typical planning loop: `/research-grill` to stress-test an idea, `research-plan` to write it down, `to-tasks` to break the plan into tasks, and `lab-notebook` to record what each task turned up. `pi-progress-synthesis` turns the notebook into an update for your PI, collaborators, or lab meeting.
+
+Skills live in `.agents/skills/`, each with an `agents/openai.yaml` for Codex. If a Claude Code checkout needs project-local instructions, run `/setup-claude` to regenerate `.claude/skills/` and `CLAUDE.md` from the canonical repo files.
 
 ## Core Layout
 
@@ -108,7 +112,7 @@ repo so everyone else gets the same project version.
 ## Principles
 
 - Start with context, not tooling.
-- Carry over domain-modeling discipline into research work: start the language section early, using research concepts, data, methods, and outputs instead of application entities.
+- Carry over domain modeling discipline into research work: start the language section early, using research concepts, data, methods, and outputs instead of application entities.
 - Keep unpublished data and credentials out of git by default.
 - Record decisions while they are still fresh.
 - Prefer a small structure that researchers will actually maintain.

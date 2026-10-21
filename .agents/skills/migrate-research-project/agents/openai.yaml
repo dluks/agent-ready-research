@@ -1,0 +1,5 @@
+interface:
+  display_name: "Migrate Research Project"
+  short_description: "Plan a safe move of a messy folder into the scaffold"
+policy:
+  allow_implicit_invocation: false

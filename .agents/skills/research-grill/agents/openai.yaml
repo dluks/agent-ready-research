@@ -1,0 +1,5 @@
+interface:
+  display_name: "Research Grill"
+  short_description: "Grill a research plan and write its context"
+policy:
+  allow_implicit_invocation: false

@@ -1,6 +1,7 @@
 ---
 name: migrate-research-project
-description: Inventory an existing messy research folder and propose a conservative migration into a single-project root or an umbrella projects directory. Use when a researcher already has notebooks, scripts, data, papers, repos, or notes outside the scaffold.
+description: Inventory an existing messy research folder and propose a conservative migration into a single-project root or an umbrella projects directory.
+disable-model-invocation: true
 ---
 
 # Migrate Research Project
@@ -34,8 +35,8 @@ propose second, copy or move only after approval.
    - **Existing git repo**: preserve history and propose adding it under
      `projects/` rather than flattening it, unless the researcher explicitly
      wants a copy-only import.
-5. Interview the researcher about ambiguous items. Ask one question at a time.
-   Use `domain-modeling` while you interview. Treat terminology as part of the migration, not a follow-up chore: clarify the source folder's project names, dataset names, acronyms, output names, local jargon, and overloaded words as they come up.
+5. Interview the researcher about ambiguous items. Call the Skill tool twice,
+   for "research-grilling" and "research-domain-modeling", before you start. Treat terminology as part of the migration, not a follow-up chore: clarify the source folder's project names, dataset names, acronyms, output names, local jargon, and overloaded words as they come up.
 6. Propose a migration table before changing anything:
 
    | Current path | Proposed destination | Action | Reason |
@@ -55,7 +56,7 @@ propose second, copy or move only after approval.
 
 Every migration should begin or extend `CONTEXT.md` with a `## Language` section. This is one of the main ways the migrated project becomes agent-ready: future agents need the project's vocabulary as much as they need its folder layout. Treat this as research-domain modeling, not as a documentation afterthought.
 
-Use the `domain-modeling` skill's `CONTEXT.md` format for this section and its decision-record guidance when a migration decision is worth preserving.
+Use the `CONTEXT.md` format from the `research-domain-modeling` skill for this section and its decision-record guidance when a migration decision is worth preserving.
 
 Capture canonical names for:
 

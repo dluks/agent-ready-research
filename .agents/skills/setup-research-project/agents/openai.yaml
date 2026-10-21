@@ -1,0 +1,5 @@
+interface:
+  display_name: "Setup Research Project"
+  short_description: "Interview and scaffold a new research project"
+policy:
+  allow_implicit_invocation: false

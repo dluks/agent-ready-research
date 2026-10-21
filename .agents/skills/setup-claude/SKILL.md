@@ -1,6 +1,7 @@
 ---
 name: setup-claude
-description: Set up generated Claude Code files from the canonical project agent files. Use when this repository needs Claude Code local setup, after editing .agents/skills, or after cloning a checkout where .claude/skills or CLAUDE.md is absent or stale.
+description: Regenerate .claude/skills/ and CLAUDE.md from the canonical .agents/skills/ and AGENTS.md, after cloning or after editing skills.
+disable-model-invocation: true
 ---
 
 # Setup Claude
