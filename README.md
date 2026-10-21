@@ -12,8 +12,7 @@ more structure only when the project needs it.
 For a new project:
 
 1. Clone this repository next to your existing work or into a fresh folder.
-2. Open it in Claude Code or Codex. Both find the project skills without any
-   setup step (see [Skills](#skills)).
+2. Open it in your LLM coding tool.
 3. Run `/setup-research-project`.
 4. Answer the interview questions.
 5. Let the skill choose a single-project or umbrella layout and populate the
@@ -56,15 +55,14 @@ an update for your PI, collaborators, or lab meeting.
 
 ### Where skills live
 
-Each skill has one copy, in `.agents/skills/<name>/`, which Codex reads
-directly. A skill folder holds a `SKILL.md`, optional supporting files
-(`references/`, `scripts/`), and `agents/openai.yaml` with Codex display
-metadata. Claude Code reads `.claude/skills/`, which holds one committed symlink
-per skill pointing back into `.agents/skills/`, and the committed `CLAUDE.md`
-contains `@AGENTS.md`.
+Each skill has one copy, in `.agents/skills/<name>/`. A skill folder holds a
+`SKILL.md` and optional supporting files (`references/`, `scripts/`, and
+tool-specific metadata under `agents/`). For tools that look for skills
+somewhere else, the repo links back to this folder: `.claude/skills/` holds one
+symlink per skill, and `CLAUDE.md` points to `AGENTS.md`.
 
 Edit skills only in `.agents/skills/`. After adding, renaming, or removing a
-skill, run `/setup-claude` to refresh the links. It also covers Windows
+skill, run `/setup-claude` to refresh those links. It also covers Windows
 checkouts without symlink support.
 
 ## Core Layout
@@ -75,9 +73,9 @@ checkouts without symlink support.
 | `AGENTS.md` | Agent-facing project rules, boundaries, and workflows. |
 | `CONTEXT.md` | Research question, language/glossary, current state, assumptions. |
 | `context/decisions/` | Dated decision records that explain why choices were made. |
-| `.agents/skills/` | Canonical project-local workflows for agents (read by Codex). |
-| `.claude/skills/` | Symlinks into `.agents/skills/` so Claude Code finds the same skills. |
-| `CLAUDE.md` | Contains `@AGENTS.md`, so Claude Code reads the same agent guide. |
+| `.agents/skills/` | Canonical project-local workflows for agents. |
+| `.claude/skills/` | Symlinks into `.agents/skills/` for tools that read skills from there. |
+| `CLAUDE.md` | Contains `@AGENTS.md`, so tools that read it get the same agent guide. |
 
 ## Optional Layout
 
