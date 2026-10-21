@@ -12,26 +12,60 @@ more structure only when the project needs it.
 For a new project:
 
 1. Clone this repository next to your existing work or into a fresh folder.
-2. Open it in your LLM coding tool.
-3. Run the `setup-research-project` skill.
+2. Open it in Claude Code or Codex. Both find the project skills without any
+   setup step (see [Skills](#skills)).
+3. Run `/setup-research-project`.
 4. Answer the interview questions.
 5. Let the skill choose a single-project or umbrella layout and populate the
    project context files.
 
-If you already have a messy project folder, run `migrate-research-project`
+If you already have a messy project folder, run `/migrate-research-project`
 first. It inventories the folder and proposes a non-destructive migration plan
 before moving or copying anything.
 
 If you are already inside an existing repository and want to make it
 agent-ready in place, run `contextualize-existing-project`.
 
-Use `research-domain-modeling` whenever terminology, canonical datasets, project-specific acronyms, outputs, or durable decisions need to be clarified while you work.
+## Skills
 
-Skills come in two kinds. **User-invoked** skills run only when you type their name (`/setup-research-project`); agents never start them on their own. **Model-invoked** skills can also be picked up by the agent when the situation fits. See the skill list in `AGENTS.md`.
+Skills come in two kinds. **User-invoked** skills run only when you type their
+name; agents never start them on their own. **Model-invoked** skills can also be
+picked up by the agent when the situation fits.
 
-A typical planning loop: `/research-grill` to stress-test an idea, `research-plan` to write it down, `to-tasks` to break the plan into tasks, and `lab-notebook` to record what each task turned up. `pi-progress-synthesis` turns the notebook into an update for your PI, collaborators, or lab meeting.
+| Skill | Kind | What it does |
+| ----- | ---- | ------------ |
+| `setup-research-project` | user | Interview you and scaffold a new project. |
+| `migrate-research-project` | user | Inventory a messy folder and plan a safe migration. |
+| `research-grill` | user | Stress-test an idea and record terms and decisions as they settle. |
+| `handoff` | user | Write a handoff document for the next agent session. |
+| `setup-claude` | user | Refresh the `.claude/skills/` links after adding, renaming, or removing a skill. |
+| `contextualize-existing-project` | model | Make an existing repository agent-ready in place. |
+| `research-grilling` | model | Interview in rounds of numbered questions, each with a recommended answer. |
+| `research-domain-modeling` | model | Sharpen the project's language in `CONTEXT.md` and record decisions. |
+| `research-plan` | model | Turn a discussion into a written analysis plan. |
+| `to-tasks` | model | Break a plan into small tasks, each listing the tasks that block it. |
+| `lab-notebook` | model | Record experiments, runs, and results so work can be resumed and checked. |
+| `pi-progress-synthesis` | model | Turn the lab notebook into a progress update for a PI or lab meeting. |
+| `research` | model | Look up a question in primary sources and save a cited note. |
+| `research-architecture-review` | model | Review the project structure for collaborators and agents. |
 
-Skills live in `.agents/skills/`, which Codex reads directly. Each skill folder holds a `SKILL.md`, optional supporting files (`references/`, `scripts/`), and an `agents/openai.yaml` with Codex display metadata. Claude Code reads `.claude/skills/`, which contains one committed symlink per skill pointing back into `.agents/skills/`, and `CLAUDE.md` contains `@AGENTS.md`. Edit skills in one place only. After adding, renaming, or removing a skill, run `/setup-claude` to refresh the links (it also covers Windows checkouts without symlink support).
+A typical loop: `/research-grill` to stress-test an idea, `research-plan` to
+write it down, `to-tasks` to break the plan into tasks, and `lab-notebook` to
+record what each task turned up. `pi-progress-synthesis` turns the notebook into
+an update for your PI, collaborators, or lab meeting.
+
+### Where skills live
+
+Each skill has one copy, in `.agents/skills/<name>/`, which Codex reads
+directly. A skill folder holds a `SKILL.md`, optional supporting files
+(`references/`, `scripts/`), and `agents/openai.yaml` with Codex display
+metadata. Claude Code reads `.claude/skills/`, which holds one committed symlink
+per skill pointing back into `.agents/skills/`, and the committed `CLAUDE.md`
+contains `@AGENTS.md`.
+
+Edit skills only in `.agents/skills/`. After adding, renaming, or removing a
+skill, run `/setup-claude` to refresh the links. It also covers Windows
+checkouts without symlink support.
 
 ## Core Layout
 
@@ -43,6 +77,7 @@ Skills live in `.agents/skills/`, which Codex reads directly. Each skill folder 
 | `context/decisions/` | Dated decision records that explain why choices were made. |
 | `.agents/skills/` | Canonical project-local workflows for agents (read by Codex). |
 | `.claude/skills/` | Symlinks into `.agents/skills/` so Claude Code finds the same skills. |
+| `CLAUDE.md` | Contains `@AGENTS.md`, so Claude Code reads the same agent guide. |
 
 ## Optional Layout
 
@@ -51,7 +86,10 @@ Create these only when useful:
 | Path | Use when |
 | ---- | -------- |
 | `context/meetings/` | Meeting notes or transcripts affect the project state. |
-| `context/reading/` | Literature notes need to stay close to the project. |
+| `context/reading/` | Literature notes need to stay close to the project. The `research` skill saves its notes here. |
+| `context/lab-notebook.md` | Experiments and analysis runs need a running record. Created by the `lab-notebook` skill. |
+| `context/plans/` | Analysis plans written by `research-plan`. |
+| `context/tasks/` | Task files written by `to-tasks` when the project has no issue tracker. |
 | `data/README.md` | A single-project repo needs root data inventory, provenance, sensitivity, and storage notes. Umbrella repos usually keep this inside each `projects/<name>/`. |
 | `notebooks/` | Exploratory analysis is part of the workflow. |
 | `src/` | Reusable code is emerging from scripts or notebooks. |
@@ -119,4 +157,4 @@ repo so everyone else gets the same project version.
 - Prefer a small structure that researchers will actually maintain.
 - Treat the repository as durable context for agents, collaborators, and future
   you.
-- Keep `.agents/skills/` as the only editable skills source. Regenerate tool-specific copies from it when needed.
+- Keep `.agents/skills/` as the only editable skills source. Other tools reach it through links.
