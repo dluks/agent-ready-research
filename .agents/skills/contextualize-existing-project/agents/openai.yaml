@@ -1,0 +1,3 @@
+interface:
+  display_name: "Contextualize Existing Project"
+  short_description: "Make an existing repo agent-ready in place"

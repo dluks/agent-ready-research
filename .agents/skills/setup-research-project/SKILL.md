@@ -1,6 +1,7 @@
 ---
 name: setup-research-project
-description: Set up a new agent-ready research scaffold by interviewing the researcher, choosing a single-project or umbrella layout, and writing durable context files. Use when starting from this template, cloning it next to existing work, or turning a loose research idea into a structured project.
+description: Set up a new agent-ready research scaffold by interviewing the researcher, choosing a single-project or umbrella layout, and writing durable context files.
+disable-model-invocation: true
 ---
 
 # Setup Research Project
@@ -16,14 +17,17 @@ shape, data, outputs, or existing materials are still ambiguous.
    - **Single project**: one research effort lives at the repository root.
    - **Umbrella project**: the root coordinates multiple related projects under
      `projects/`, while shared context and papers live at the root.
-3. Ask one question at a time until the mode, materials, data, outputs, and next
-   action are clear. If written context already answers a question, infer a
-   conservative answer and mark it as an assumption.
-   Use `domain-modeling` during this interview to start the project's language section by clarifying core terms, acronyms, dataset names, output names, and overloaded words.
-4. If the researcher already has a folder or repository to bring in, invoke
-   `migrate-research-project` before moving files:
-   - Single project: propose migration into the root layout.
-   - Umbrella project: propose migration into `projects/<project-name>/`.
+3. Call the Skill tool twice, for "research-grilling" and "research-domain-modeling",
+   and interview until the mode, materials, data, outputs, and next action are
+   clear. If written context already answers a question, infer a conservative
+   answer and mark it as an assumption. Use the domain modeling to start the
+   project's language section by clarifying core terms, acronyms, dataset
+   names, output names, and overloaded words.
+4. If the researcher already has a folder or repository to bring in, tell them
+   to run `/migrate-research-project` before any files move, and pick up setup
+   again once the migration is applied:
+   - Single project: the migration targets the root layout.
+   - Umbrella project: the migration targets `projects/<project-name>/`.
 5. Populate or update root context:
    - `README.md`
    - `AGENTS.md`
@@ -92,7 +96,7 @@ attach it under `projects/` rather than flattening it.
 
 Capture terms for domain concepts, populations, datasets, variables, measurements, outputs, acronyms, and overloaded words. Mark unresolved terms as questions instead of inventing certainty.
 
-Use the `domain-modeling` skill's `CONTEXT.md` format when writing this section.
+Use the `CONTEXT.md` format from the `research-domain-modeling` skill when writing this section.
 
 ## Decision Record Template
 

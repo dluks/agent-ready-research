@@ -1,0 +1,5 @@
+interface:
+  display_name: "Setup Claude"
+  short_description: "Regenerate Claude Code files from .agents"
+policy:
+  allow_implicit_invocation: false

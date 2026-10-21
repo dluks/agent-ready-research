@@ -21,7 +21,8 @@ the researcher explicitly approves a separate migration plan.
    - distill durable rules into `AGENTS.md`
    - replace `CLAUDE.md` with `@AGENTS.md`
    - prefer deleting stale, generic, tool-specific, or aspirational advice
-3. Interview the researcher until you understand:
+3. Call the Skill tool with "research-grilling" and interview the researcher
+   until you understand:
    - research question and current phase
    - whether this repo is a single project or an umbrella
    - the core domain terms, acronyms, dataset names, output names, and overloaded words that future agents must use consistently
@@ -50,17 +51,35 @@ the researcher explicitly approves a separate migration plan.
 
 ## Agent Guide Pruning
 
-Default to a shorter `AGENTS.md`. Keep only instructions that are specific,
-current, and repeatedly useful for this repository. Move background context to
-`CONTEXT.md`, data details to `data/README.md`, and past decisions to
-`context/decisions/`. Do not preserve content just because it was already in
-`CLAUDE.md` or `AGENTS.md`.
+Default to a shorter `AGENTS.md`. Every line in it is loaded on every turn, so
+keep only instructions that are specific, current, and repeatedly useful for
+this repository. Content earns its place by being useful now; having been in
+`CLAUDE.md` or `AGENTS.md` before is no reason to keep it.
+
+Go through the existing guide line by line:
+
+- **One home per fact.** Move background context to `CONTEXT.md`, data details
+  to `data/README.md`, and past decisions to `context/decisions/`. Leave a
+  short pointer in `AGENTS.md` that says what the file holds and when to read
+  it ("Read `data/README.md` before touching analysis inputs").
+- **Let the repository speak for itself.** Drop lines that restate what an
+  agent can find in one look: the directory listing, `environment.yml` or
+  `pyproject.toml`, a script's `--help`. Keep what no file confesses: unwritten
+  conventions, the reason behind a choice, known gotchas.
+- **Cut defaults.** Delete instructions the agent already follows without being
+  told ("write clean code", "be careful with data"). If a sentence would not
+  change behaviour, remove the whole sentence.
+- **Say what to do.** Phrase rules as the behaviour you want ("store raw data
+  outside git and record its location in `data/README.md`"). Keep a bare
+  prohibition only for a hard guardrail, and pair it with what to do instead.
+- **Remove stale lines.** Check each line against the current state of the
+  repo. Outdated paths, finished migrations, and old tool advice go.
 
 ## Language
 
-Starting the language section is a core part of contextualizing an existing research project, not an optional polish step. In `CONTEXT.md`, create or extend a `## Language` section with the canonical terms future agents and collaborators should use. This is the research-project analogue of domain-modeling while you work.
+Starting the language section is a core part of contextualizing an existing research project, not an optional polish step. In `CONTEXT.md`, create or extend a `## Language` section with the canonical terms future agents and collaborators should use. This is the research-project version of domain modeling while you work.
 
-Use the `domain-modeling` skill while interviewing: challenge fuzzy or conflicting terms, test them against concrete research scenarios, and update `CONTEXT.md` as terms resolve instead of saving terminology for the end.
+Call the Skill tool with "research-domain-modeling" before interviewing, and use it throughout: challenge fuzzy or conflicting terms, test them against concrete research scenarios, and update `CONTEXT.md` as terms resolve instead of saving terminology for the end.
 
 Include terms for:
 

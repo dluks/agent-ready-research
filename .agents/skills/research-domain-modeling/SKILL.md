@@ -1,5 +1,5 @@
 ---
-name: domain-modeling
+name: research-domain-modeling
 description: Build and sharpen a research project's language and durable decisions. Use when the researcher wants to pin down terminology, clarify a concept, resolve an overloaded acronym, name canonical data or outputs, or when another skill needs to maintain the project domain model.
 ---
 

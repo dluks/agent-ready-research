@@ -1,0 +1,3 @@
+interface:
+  display_name: "To Tasks"
+  short_description: "Break a plan into tasks with blocking edges"

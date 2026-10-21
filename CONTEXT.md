@@ -18,9 +18,14 @@ TBD.
 
 ## Language
 
-| Term | Meaning | Notes |
-| ---- | ------- | ----- |
-| TBD | TBD | TBD |
+Canonical project terms, in the format from the `research-domain-modeling`
+skill's `CONTEXT-FORMAT.md`:
+
+**<Term>**:
+<One or two sentences on what it means in this project.>
+_Avoid_: <synonyms to steer away from>
+
+TBD.
 
 ## Important Assumptions
 
@@ -33,6 +38,7 @@ TBD.
 ## Useful Pointers
 
 - Data inventory: `data/README.md`
+- Lab notebook: `context/lab-notebook.md` (created by the `lab-notebook` skill)
 - Decisions: `context/decisions/`
 - Meetings: `context/meetings/`
 - Reading notes: `context/reading/`

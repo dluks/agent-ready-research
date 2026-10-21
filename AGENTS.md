@@ -44,17 +44,26 @@ Fill this in with the `setup-research-project` skill.
 
 The project ships starter skills in `.agents/skills/`. Treat this as the only editable source of truth for project-local skills.
 
+User-invoked (the researcher types the name; agents tell the researcher to run them):
+
 - `setup-research-project`: interview the researcher and populate the initial
   context files, branching between single-project and umbrella layouts.
 - `migrate-research-project`: inventory an existing folder and propose a
   conservative migration path into the root or `projects/<name>/`.
+- `research-grill`: run `research-grilling` with `research-domain-modeling` so the interview also updates language and durable decisions.
+- `handoff`: compact the current session into a handoff document for the next agent session.
+- `setup-claude`: regenerate `.claude/skills/` from `.agents/skills/` and write `CLAUDE.md` as `@AGENTS.md` when Claude Code needs local setup.
+
+Model-invoked (agents may also call these with the Skill tool when they fit):
+
 - `contextualize-existing-project`: make an existing repository agent-ready in
   place without migrating it into this scaffold.
-- `domain-modeling`: sharpen the project's language and record durable research decisions as terms and tradeoffs become clear.
-- `grilling`: interview the researcher one question at a time to stress-test a plan, method, claim, dataset, interpretation, or output.
-- `research-grill`: run `grilling` with `domain-modeling` so the interview also updates language and durable decisions.
-- `setup-claude`: regenerate `.claude/skills/` from `.agents/skills/` and write `CLAUDE.md` as `@AGENTS.md` when Claude Code needs local setup.
-- `research-plan`: turn a discussion into an analysis plan.
-- `to-work-packages`: break a plan into independently executable research tasks.
+- `research-domain-modeling`: sharpen the project's language and record durable research decisions as terms and tradeoffs become clear.
+- `research-grilling`: interview the researcher in rounds of numbered questions, each with a recommended answer, to stress-test a plan, method, claim, dataset, interpretation, or output.
+- `research-plan`: turn a discussion into a written analysis plan.
+- `to-tasks`: break a plan into small tasks, each listing the tasks that block it.
+- `lab-notebook`: record experiments, runs, and results so work can be resumed and checked later. The notebook lives in `context/lab-notebook.md` once created.
+- `pi-progress-synthesis`: turn lab notebook entries and results into an evidence-backed progress update for a PI, collaborators, or a lab meeting.
+- `research`: look up a question in primary sources and save a cited note in `context/reading/`.
 - `research-architecture-review`: review the project structure for agent and
   collaborator navigability.
