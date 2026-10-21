@@ -1,0 +1,4 @@
+interface:
+  display_name: "PI Update"
+  short_description: "Build clear scientific progress updates"
+  default_prompt: "Use $pi-update to create a concise scientific update with evidence, caveats, and next decisions."
