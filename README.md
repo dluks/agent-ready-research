@@ -44,13 +44,13 @@ picked up by the agent when the situation fits.
 | `research-plan` | model | Turn a discussion into a written analysis plan. |
 | `to-tasks` | model | Break a plan into small tasks, each listing the tasks that block it. |
 | `lab-notebook` | model | Record experiments, runs, and results so work can be resumed and checked. |
-| `pi-progress-synthesis` | model | Turn the lab notebook into a progress update for a PI or lab meeting. |
+| `pi-update` | model | Turn the lab notebook into a progress update for a PI or lab meeting. |
 | `research` | model | Look up a question in primary sources and save a cited note. |
 | `research-architecture-review` | model | Review the project structure for collaborators and agents. |
 
 A typical loop: `/research-grill` to stress-test an idea, `research-plan` to
 write it down, `to-tasks` to break the plan into tasks, and `lab-notebook` to
-record what each task turned up. `pi-progress-synthesis` turns the notebook into
+record what each task turned up. `pi-update` turns the notebook into
 an update for your PI, collaborators, or lab meeting.
 
 ### Where skills live

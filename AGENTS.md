@@ -63,7 +63,7 @@ Model-invoked (agents may also call these with the Skill tool when they fit):
 - `research-plan`: turn a discussion into a written analysis plan.
 - `to-tasks`: break a plan into small tasks, each listing the tasks that block it.
 - `lab-notebook`: record experiments, runs, and results so work can be resumed and checked later. The notebook lives in `context/lab-notebook.md` once created.
-- `pi-progress-synthesis`: turn lab notebook entries and results into an evidence-backed progress update for a PI, collaborators, or a lab meeting.
+- `pi-update`: turn lab notebook entries and results into an evidence-backed progress update for a PI, collaborators, or a lab meeting.
 - `research`: look up a question in primary sources and save a cited note in `context/reading/`.
 - `research-architecture-review`: review the project structure for agent and
   collaborator navigability.

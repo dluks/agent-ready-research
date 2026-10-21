@@ -1,9 +1,9 @@
 ---
-name: pi-progress-synthesis
+name: pi-update
 description: "Create or revise PI-, collaborator-, or lab-facing scientific progress updates, slide narratives, and research briefs that connect goals, evidence, caveats, and decisions. Use when an agent must synthesize experiments for a scientific audience, prepare a lab meeting or progress review, or turn results into a decision-focused story."
 ---
 
-# PI Progress Synthesis
+# PI Update
 
 ## Start From The Record
 
